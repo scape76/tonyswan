@@ -21,7 +21,8 @@
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4",
     "@tonyswan/utils": "*",
-    "@tonyswan/ui": "*"
+    "@tonyswan/ui": "*",
+    "@tonyswan/db": "*"
   },
   "devDependencies": {
     "@types/node": "^20",
