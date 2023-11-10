@@ -2,7 +2,11 @@
   "name": "tonyswan",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "db:start": "docker compose up -d",
+    "db:stop": "docker compose down",
+    "dev:website": "npm run db:start && npx nx dev website"
+  },
   "private": true,
   "devDependencies": {
     "@nx/js": "17.1.1",

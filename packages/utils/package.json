@@ -8,7 +8,7 @@
     "build": "tsc index.ts --outDir dist"
   },
   "author": "scape76",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",

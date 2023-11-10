@@ -12,7 +12,7 @@
     "url": "git+https://github.com/scape76/tonyswan.git"
   },
   "author": "scape76",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/scape76/tonyswan/issues"
   },
