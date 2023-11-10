@@ -11,17 +11,18 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
+    "@tonyswan/ui": "*",
+    "@tonyswan/utils": "*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "next": "14.0.2",
+    "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.22.4",
-    "@tonyswan/utils": "*",
-    "@tonyswan/ui": "*"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
