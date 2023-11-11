@@ -1,9 +1,12 @@
 import { AppRoutes } from "@/common/routes";
-import { buttonVariants } from "@tonyswan/ui";
+import { Button, buttonVariants } from "@tonyswan/ui";
 import { cn } from "@tonyswan/utils";
 import Link from "next/link";
+import { auth } from "@/utils/auth/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
   return (
     <>
       <header className="flex container p-4 px-8 items-center justify-between">
@@ -15,6 +18,7 @@ export default function Home() {
           Login
         </Link>
       </header>
+      <main>user: {JSON.stringify(session?.user)}</main>
     </>
   );
 }

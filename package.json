@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "install:website": "npm install --prefix packages/website",
+    "install:utils": "npm install --prefix packages/utils",
+    "install:db": "npm install --prefix packages/db",
+    "install:ui": "npm install --prefix packages/ui",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
     "dev:website": "npm run db:start && npx nx dev website"
