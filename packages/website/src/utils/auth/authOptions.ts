@@ -21,6 +21,13 @@ const authOptions: AuthOptions = {
         session.user.image = token.picture;
       }
 
+      if (user) {
+        session.user.id = user.id;
+        session.user.email = user.email;
+        session.user.image = user.image;
+        session.user.name = user.name;
+      }
+
       return session;
     },
     async jwt({ user, token, account }) {

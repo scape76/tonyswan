@@ -8,7 +8,8 @@
     "install:db": "cd packages/db && npm install",
     "install:ui": "cd packages/ui && npm install",
     "install:all": "npm-run-all install:!(all)",
-    "db:start": "docker compose up -d",
+    "db:push": "cd packages/db && npx prisma db push",
+    "db:start": "docker compose up -d && npm run db:push",
     "db:stop": "docker compose down",
     "dev:website": "npm run db:start && npx nx dev website"
   },
