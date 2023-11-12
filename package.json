@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "install:website": "npm install --prefix packages/website",
-    "install:utils": "npm install --prefix packages/utils",
-    "install:db": "npm install --prefix packages/db",
-    "install:ui": "npm install --prefix packages/ui",
+    "install:website": "cd packages/website && npm install",
+    "install:utils": "cd packages/utils && npm install",
+    "install:db": "cd packages/db && npm install",
+    "install:ui": "cd packages/ui && npm install",
+    "install:all": "npm-run-all install:!(all)",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
     "dev:website": "npm run db:start && npx nx dev website"
@@ -14,6 +15,7 @@
   "private": true,
   "devDependencies": {
     "@nx/js": "17.1.1",
+    "npm-run-all": "^4.1.5",
     "nx": "17.1.1",
     "typescript": "^5.2.2"
   },
