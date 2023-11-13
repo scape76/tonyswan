@@ -41,9 +41,7 @@ const UserMenu = ({ user }: UserMenuProps) => {
         </DropdownMenuItem>
         <DropdownMenuItem>Billing</DropdownMenuItem>
         <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem className="bg-destructive" asChild>
-          <LogoutButton className="w-full" />
-        </DropdownMenuItem>
+        <LogoutButton className="w-full" />
       </DropdownMenuContent>
     </DropdownMenu>
   );

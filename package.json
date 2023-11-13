@@ -11,7 +11,9 @@
     "db:push": "cd packages/db && npx prisma db push",
     "db:start": "docker compose up -d && npm run db:push",
     "db:stop": "docker compose down",
-    "dev:website": "npm run db:start && npx nx dev website"
+    "website:dev": "npm run db:start && npx nx dev website",
+    "website:build": "npx nx build website",
+    "website:start": "npx nx start website"
   },
   "private": true,
   "devDependencies": {

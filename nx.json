@@ -7,7 +7,12 @@
   "targetDefaults": {
     "build": {
       "cache": true,
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "configurations": {
+        "production": {
+          "tsconfig": "packages/website/tsconfig.json"
+        }
+      }
     },
     "lint": {
       "cache": true

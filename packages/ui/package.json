@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc index.ts --outDir dist"
+    "build": "tsc index.ts icons/index.ts --outDir dist --jsx preserve --esModuleInterop"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,8 @@
     "lucide-react": "^0.292.0",
     "react": "^18.2.0"
   },
-  "homepage": "https://github.com/scape76/tonyswan#readme"
+  "homepage": "https://github.com/scape76/tonyswan#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
 }

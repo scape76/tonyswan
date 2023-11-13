@@ -53,6 +53,7 @@ const authOptions: AuthOptions = {
       };
     },
   },
+  secret: getEnvOrThrow("SECRET"),
 };
 
 export { authOptions };

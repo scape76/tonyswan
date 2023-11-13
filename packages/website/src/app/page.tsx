@@ -4,6 +4,7 @@ import { cn } from "@tonyswan/utils";
 import Link from "next/link";
 import { auth } from "@/utils/auth/auth";
 import { UserMenu } from "@/components/UserMenu";
+import { LogoutButton } from "@/components/LogoutButton";
 
 export default async function Home() {
   const session = await auth();
@@ -23,7 +24,10 @@ export default async function Home() {
           </Link>
         )}
       </header>
-      <main>user: {JSON.stringify(session?.user)}</main>
+      <hr className="w-full border border-b border-border" />
+      <main className="container py-6">
+        <h1 className="text-4xl md:text-6xl text-center">Coming soon...</h1>
+      </main>
     </>
   );
 }

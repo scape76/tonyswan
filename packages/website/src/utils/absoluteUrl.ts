@@ -5,7 +5,11 @@ const absoluteUrl = (path?: string) => {
     return `http://localhost:3000${path}`;
   }
 
-  return `${getEnvOrThrow("BASE_URL")}${path}`;
+  if (typeof window === "undefined") {
+    return `${getEnvOrThrow("BASE_URL")}${path}`;
+  }
+
+  return `${window.location.origin}${path}`;
 };
 
 export { absoluteUrl };
