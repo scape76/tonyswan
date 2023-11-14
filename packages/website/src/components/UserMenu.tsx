@@ -12,16 +12,29 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@tonyswan/ui";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { LogoutButton } from "./LogoutButton";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@tonyswan/ui";
+import { Icons } from "@/components/Icons";
+import React from "react";
+import { cn } from "@tonyswan/utils";
 
 type UserMenuProps = { user: User };
 
 const UserMenu = ({ user }: UserMenuProps) => {
-  console.log(user);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -33,12 +46,7 @@ const UserMenu = ({ user }: UserMenuProps) => {
       <DropdownMenuContent side="bottom" align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href={`/profile/${user.id}`}>
-            Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </Link>
-        </DropdownMenuItem>
+        <DropdownMenuItem asChild>Profile</DropdownMenuItem>
         <DropdownMenuItem>Billing</DropdownMenuItem>
         <DropdownMenuItem>Team</DropdownMenuItem>
         <LogoutButton className="w-full" />
