@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc index.ts --outDir dist"
+    "build": "npx prisma generate && npx prisma db push && tsc index.ts --outDir dist"
   },
   "repository": {
     "type": "git",
