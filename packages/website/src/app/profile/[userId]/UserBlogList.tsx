@@ -1,11 +1,15 @@
 "use client";
 
 import { trpc } from "@/app/_trpc/client";
-import { Inbox } from "@tonyswan/ui/icons";
+import { Inbox, Loader2 } from "@tonyswan/ui/icons";
 import Link from "next/link";
 
 const UserBlogList = () => {
-  const { data } = trpc.blog.getUserPosts.useQuery();
+  const { data, isLoading } = trpc.blog.getUserPosts.useQuery();
+
+  if (isLoading) {
+    return <Loader2 className="w-24 h-24 mx-auto animate-spin" />;
+  }
 
   return (
     <div className="mt-6 flex flex-col w-full gap-4">

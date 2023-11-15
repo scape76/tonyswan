@@ -23,15 +23,15 @@ export default async function ProfilePage() {
   const { user } = session;
 
   return (
-    <main className="wrapper">
-      <div className="flex gap-6 items-center">
+    <main className="wrapper px-6">
+      <div className="flex gap-6 items-center my-4">
         {user.image && (
           <UserAvatar
             src={getBetterGoogleImage(user.image)}
             alt="logo"
             width={100}
             height={100}
-            className="my-4 rounded-full"
+            className="rounded-full"
           />
         )}
         <div className="flex flex-col">
@@ -40,8 +40,8 @@ export default async function ProfilePage() {
       </div>
       <hr className="border border-b border-border" />
       <section>
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl text-center mt-4 inline-block">Your blog</h1>
+        <div className="flex items-center justify-between my-4">
+          <h1 className="text-3xl text-center inline-block">Your blog</h1>
           <Link
             href="/blog/create"
             className={cn(buttonVariants({ variant: "default" }))}

@@ -2,8 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import EditorJS from "@editorjs/editorjs";
-import Header from "@editorjs/header";
-import List from "@editorjs/list";
 import "@/styles/editor.css";
 import {
   Button,
@@ -21,7 +19,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { blogSchema } from "@/utils/schema/blog";
 import * as z from "zod";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type Inputs = z.infer<typeof blogSchema>;
 
@@ -29,9 +27,12 @@ const Editor = () => {
   const ref = useRef<EditorJS>();
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
+  const router = useRouter();
+
   const { isLoading, mutate } = trpc.blog.create.useMutation({
     onSuccess(data, variables, context) {
-      if (data) redirect(`/blog/${data?.id}`);
+      console.log("SUCCESS", data);
+      if (data) router.push(`/blog/${data?.id}`);
     },
   });
 
