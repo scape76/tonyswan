@@ -8,7 +8,6 @@ const LogoutButton = ({ ...props }: ButtonProps) => {
     <Button
       variant="destructive"
       onClick={() => {
-        console.log("here");
         signOut();
       }}
       {...props}

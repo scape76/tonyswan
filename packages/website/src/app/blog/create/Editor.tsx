@@ -5,12 +5,44 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import "@/styles/editor.css";
-import { Button, Input } from "@tonyswan/ui";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+} from "@tonyswan/ui";
 import { Loader2 } from "@tonyswan/ui/icons";
+import { trpc } from "@/app/_trpc/client";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { blogSchema } from "@/utils/schema/blog";
+import * as z from "zod";
+import { redirect } from "next/navigation";
+
+type Inputs = z.infer<typeof blogSchema>;
 
 const Editor = () => {
   const ref = useRef<EditorJS>();
   const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  const [name, setName] = useState<string>("");
+
+  const { isLoading, mutate } = trpc.blog.create.useMutation({
+    onSuccess(data, variables, context) {
+      redirect("/profile");
+    },
+  });
+
+  const form = useForm<Inputs>({
+    resolver: zodResolver(blogSchema),
+    defaultValues: {
+      name: "",
+    },
+  });
 
   const initializeEditor = useCallback(async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default;
@@ -62,15 +94,42 @@ const Editor = () => {
     );
   }
 
+  const saveBlog = async ({ name }: Inputs) => {
+    try {
+      const body = await ref.current?.save();
+
+      mutate({ name, body: JSON.stringify(body) });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
-      <Input placeholder="Name your post..." />
-      <div id="container" className="prose-stone mx-auto my-6" />
-      <div className="flex w-full justify-end">
-        <Button className="self-end" variant={"outline"}>
-          Save
-        </Button>
-      </div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(saveBlog)}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input placeholder="Name your post..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div id="container" className="prose-stone mx-auto my-6" />
+          <div className="flex w-full justify-end">
+            <Button className="self-end" variant={"outline"} type="submit">
+              {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+              Save
+            </Button>
+          </div>
+        </form>
+      </Form>
     </div>
   );
 };

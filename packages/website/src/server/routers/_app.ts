@@ -1,8 +1,9 @@
 import { z } from "zod";
-import { procedure, router } from "../trpc";
+import { publicProcedure, router } from "../trpc";
+import { blogRouter } from "./blog";
 
 const appRouter = router({
-  hello: procedure
+  hello: publicProcedure
     .input(
       z.object({
         text: z.string(),
@@ -13,6 +14,7 @@ const appRouter = router({
         greeting: `hello ${opts.input.text}`,
       };
     }),
+  blog: blogRouter,
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;

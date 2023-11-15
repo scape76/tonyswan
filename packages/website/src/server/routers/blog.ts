@@ -1,18 +1,49 @@
 import { z } from "zod";
-import { procedure, router } from "../trpc";
+import { protectedProcedure, router } from "../trpc";
+import { prisma } from "@tonyswan/db";
 
 const blogRouter = router({
-  create: procedure
+  create: protectedProcedure
     .input(
       z.object({
-        text: z.string(),
+        name: z.string(),
+        body: z.any(),
       })
     )
-    .query((opts) => {
-      return {
-        greeting: `hello ${opts.input.text}`,
-      };
+    .mutation(async (opts) => {
+      try {
+        const { user } = opts.ctx.session;
+        const { name, body } = opts.input;
+
+        const post = await prisma.post.create({
+          data: {
+            userId: user.id,
+            name,
+            body,
+          },
+        });
+
+        return post;
+      } catch (err) {
+        console.log(err);
+      }
     }),
+  getUserPosts: protectedProcedure.query(async (opts) => {
+    const { user } = opts.ctx.session;
+
+    const posts = await prisma.post.findMany({
+      where: {
+        userId: user.id,
+      },
+      select: {
+        id: true,
+        name: true,
+      },
+      take: 10,
+    });
+
+    return posts;
+  }),
 });
 
 export { blogRouter };

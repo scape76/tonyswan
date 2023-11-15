@@ -13,6 +13,7 @@ import { getBetterGoogleImage } from "@/utils/getBetterGoogleImage";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@tonyswan/utils";
+import { UserBlogList } from "./UserBlogList";
 
 export default async function ProfilePage() {
   const session = await auth();
@@ -20,8 +21,6 @@ export default async function ProfilePage() {
   if (!session?.user) notFound();
 
   const { user } = session;
-
-  console.log(user);
 
   return (
     <main className="wrapper">
@@ -51,6 +50,7 @@ export default async function ProfilePage() {
             Create post
           </Link>
         </div>
+        <UserBlogList />
       </section>
     </main>
   );
