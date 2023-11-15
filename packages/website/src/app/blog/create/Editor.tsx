@@ -29,11 +29,9 @@ const Editor = () => {
   const ref = useRef<EditorJS>();
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  const [name, setName] = useState<string>("");
-
   const { isLoading, mutate } = trpc.blog.create.useMutation({
     onSuccess(data, variables, context) {
-      redirect("/profile");
+      if (data) redirect(`/blog/${data?.id}`);
     },
   });
 
