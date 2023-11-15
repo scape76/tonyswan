@@ -11,3 +11,4 @@ export * from "./components/input";
 export * from "./components/label";
 export * from "./components/radio-group";
 export * from "./components/card";
+export * from "./components/navigation-menu";
