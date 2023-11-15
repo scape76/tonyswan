@@ -2,16 +2,18 @@
 
 import { User } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@tonyswan/ui";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
-const UserAvatar = ({ imageUrl }: { imageUrl: string }) => {
+interface UserAvatarProps extends ImageProps {}
+
+const UserAvatar = ({ src, ...props }: ImageProps) => {
   return (
     <Image
-      src={imageUrl}
-      alt="logo"
+      src={src}
       width={120}
       height={120}
       className="my-4 rounded-full"
+      {...props}
     />
   );
 };

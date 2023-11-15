@@ -31,6 +31,7 @@ import {
 import { Icons } from "@/components/Icons";
 import React from "react";
 import { cn } from "@tonyswan/utils";
+import { UserAvatar } from "./UserAvatar";
 
 type UserMenuProps = { user: User };
 
