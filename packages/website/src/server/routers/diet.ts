@@ -5,7 +5,14 @@ import { biodataSchema } from "@/utils/schema/diet";
 
 const dietRouter = router({
   saveBiodata: protectedProcedure
-    .input(biodataSchema)
+    .input(
+      z.object({
+        age: z.number(),
+        gender: z.enum(["MALE", "FEMALE"]),
+        height: z.number(),
+        weight: z.number(),
+      })
+    )
     .mutation(async (opts) => {
       const { user } = opts.ctx.session;
       const { gender } = opts.input;

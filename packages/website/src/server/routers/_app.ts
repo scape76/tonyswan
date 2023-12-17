@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { publicProcedure, router } from "../trpc";
 import { blogRouter } from "./blog";
+import { dietRouter } from "./diet";
 
 const appRouter = router({
   hello: publicProcedure
@@ -15,6 +16,7 @@ const appRouter = router({
       };
     }),
   blog: blogRouter,
+  diet: dietRouter,
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;

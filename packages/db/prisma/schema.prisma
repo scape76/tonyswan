@@ -47,8 +47,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
-  
-  BioData       BioData?
+
+  BioData BioData?
 }
 
 enum Gender {
@@ -58,11 +58,10 @@ enum Gender {
 
 model BioData {
   userId String @unique
-  age Int
+  age    Int
   gender Gender
   height Int
   weight Int
-
 
   user User @relation(fields: [userId], references: [id])
 }

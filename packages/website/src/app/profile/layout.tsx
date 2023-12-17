@@ -1,10 +1,15 @@
 import { Button } from "@tonyswan/ui";
 import type { PropsWithChildren } from "react";
 import { GoBackButton } from "./GoBackButton";
+import { Header } from "@/components/Header";
+import { auth } from "@/utils/auth/auth";
 
-export default function ProfileLayout({ children }: PropsWithChildren) {
+export default async function ProfileLayout({ children }: PropsWithChildren) {
+  const session = await auth();
+
   return (
     <>
+      <Header user={session?.user} />
       <main className="wrapper relative">
         <div className="absolute -left-36">
           <GoBackButton variant={"outline"} />
