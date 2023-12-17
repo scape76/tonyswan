@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { protectedProcedure, router } from "../trpc";
 import { prisma } from "@tonyswan/db";
+import { TRPCError } from "@trpc/server";
 
 const blogRouter = router({
   create: protectedProcedure
@@ -14,6 +15,15 @@ const blogRouter = router({
       try {
         const { user } = opts.ctx.session;
         const { name, body } = opts.input;
+
+        const count = await getUserPostsCount(user.id);
+
+        if (count >= 3) {
+          throw new TRPCError({
+            message: "You cannot have more than 3 blog posts.",
+            code: "FORBIDDEN",
+          });
+        }
 
         const post = await prisma.post.create({
           data: {
@@ -45,5 +55,15 @@ const blogRouter = router({
     return posts;
   }),
 });
+
+async function getUserPostsCount(userId: string) {
+  const count = await prisma.post.count({
+    where: {
+      userId,
+    },
+  });
+
+  return count;
+}
 
 export { blogRouter };

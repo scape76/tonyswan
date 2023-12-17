@@ -7,7 +7,7 @@
     "install:utils": "cd packages/utils && npm install",
     "install:db": "cd packages/db && npm install",
     "install:ui": "cd packages/ui && npm install",
-    "install:all": "npm-run-all install:!(all)",
+    "install-all": "npm-run-all install:*",
     "db:generate": "cd packages/db && npx prisma generate && npx prisma db push",
     "db:start": "docker compose up -d && npm run db:generate",
     "db:stop": "docker compose down",

@@ -15,6 +15,12 @@ import Link from "next/link";
 import { cn } from "@tonyswan/utils";
 import { UserBlogList } from "./UserBlogList";
 
+export type ProfilePageProps = {
+  params: {
+    userId: string;
+  };
+};
+
 export default async function ProfilePage() {
   const session = await auth();
 
@@ -23,7 +29,7 @@ export default async function ProfilePage() {
   const { user } = session;
 
   return (
-    <main className="wrapper px-6">
+    <div className="px-6">
       <div className="flex gap-6 items-center my-4">
         {user.image && (
           <UserAvatar
@@ -52,6 +58,6 @@ export default async function ProfilePage() {
         </div>
         <UserBlogList />
       </section>
-    </main>
+    </div>
   );
 }

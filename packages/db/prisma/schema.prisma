@@ -47,6 +47,23 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
+
+  BioData BioData?
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model BioData {
+  userId String @unique
+  age    Int
+  gender Gender
+  height Int
+  weight Int
+
+  user User @relation(fields: [userId], references: [id])
 }
 
 model VerificationToken {
