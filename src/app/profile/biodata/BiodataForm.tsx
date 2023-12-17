@@ -3,7 +3,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MetricForm } from "./MetricForm";
 import { USForm } from "./USForm";
-import { trpc } from "@/app/_trpc/client";
 import { BioData } from "@/lib/db";
 
 const BiodataForm = ({ data }: { data: BioData | null }) => {

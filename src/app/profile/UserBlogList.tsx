@@ -1,7 +1,7 @@
 "use client";
 
 import { trpc } from "@/app/_trpc/client";
-import { Inbox, Loader2 } from "@tonyswan/ui/icons";
+import { Inbox, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 const UserBlogList = () => {

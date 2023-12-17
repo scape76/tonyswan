@@ -1,11 +1,10 @@
-import { ProfilePageProps } from "../page";
 import { BiodataForm } from "./BiodataForm";
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
 import { AppRoutes } from "@/common/routes";
 import { userBiodataLoader } from "../loaders";
 
-export default async function BiodataPage({ params }: ProfilePageProps) {
+export default async function BiodataPage() {
   const session = await auth();
 
   if (!session?.user) redirect(AppRoutes.LOGIN);

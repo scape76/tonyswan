@@ -43,13 +43,13 @@ const ProfileNavigation = ({ user }: { user: User }) => {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href={`/profile/${user.id}/training`} title="Training">
+              <ListItem href={`/profile/training`} title="Training">
                 Checkout your training schedule
               </ListItem>
-              <ListItem href={`/profile/${user.id}/diet`} title="Diet">
+              <ListItem href={`/profile/diet`} title="Diet">
                 Checkout your diet
               </ListItem>
-              <ListItem href={`/profile/${user.id}/blog`} title="Blog">
+              <ListItem href={`/profile/blog`} title="Blog">
                 Checkout your blog posts
               </ListItem>
             </ul>

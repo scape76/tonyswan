@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ProfilePageProps } from "../page";
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
 import { AppRoutes } from "@/common/routes";
@@ -17,7 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export default async function DietPage({ params }: ProfilePageProps) {
+export default async function DietPage() {
   const session = await auth();
 
   if (!session?.user) redirect(AppRoutes.LOGIN);
@@ -83,7 +82,7 @@ export default async function DietPage({ params }: ProfilePageProps) {
       )}
       <p className="mt-6 text-lg">
         You can adjust your weight and calories
-        <Link href={`/profile/${userId}/biodata`} className="ml-2 underline">
+        <Link href={`/profile/biodata`} className="ml-2 underline">
           here
         </Link>
       </p>
