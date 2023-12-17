@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import { Header } from "@/components/Header";
 import { auth } from "@/utils/auth/auth";
+import { Toaster } from "@tonyswan/ui";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,15 +18,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
-
   return (
     <html lang="en">
       <Providers>
-        <body className={inter.className}>
-          <Header user={session?.user} />
-          {children}
-        </body>
+        <body className={inter.className}>{children}</body>
       </Providers>
     </html>
   );

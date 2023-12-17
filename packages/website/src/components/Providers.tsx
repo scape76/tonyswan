@@ -3,6 +3,7 @@
 import { trpc } from "@/app/_trpc/client";
 import { absoluteUrl } from "@/utils/absoluteUrl";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@tonyswan/ui";
 import { httpBatchLink } from "@trpc/client";
 import { PropsWithChildren, useState } from "react";
 
@@ -20,7 +21,10 @@ const Providers = ({ children }: PropsWithChildren) => {
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <Toaster />
+      </QueryClientProvider>
     </trpc.Provider>
   );
 };
