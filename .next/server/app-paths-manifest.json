@@ -1,6 +1,0 @@
-{
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/trpc/[trpc]/route": "app/api/trpc/[trpc]/route.js",
-  "/profile/[userId]/diet/page": "app/profile/[userId]/diet/page.js",
-  "/profile/[userId]/biodata/page": "app/profile/[userId]/biodata/page.js"
-}
