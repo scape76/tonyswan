@@ -11,7 +11,6 @@ export default async function ProfileLayout({ children }: PropsWithChildren) {
       <Header user={session?.user} />
       <main className="wrapper relative">
         <div className="absolute -left-36">
-          asd
           <GoBackButton variant={"outline"} />
         </div>
         {children}
